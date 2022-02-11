@@ -6,7 +6,7 @@ import ExchangeService from './exchange-service.js';
 
 
 function getElements(response, amount) {
-  if (response.result === "success") {
+  if (response.result === "success" && response.error_type != "unsupported-code") {
     const conversionRate = response.conversion_rates['USD'];
     $('.results').show();
     $('#show-conversion').text(`Your U.S. $${amount} is worth  ${amount * conversionRate} ${response.base_code}`);
