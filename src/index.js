@@ -6,8 +6,10 @@ import ExchangeService from './exchange-service.js';
 
 
 function getElements(response, amount) {
+  
   if (response.result === "success" && response.error_type != "unsupported-code") {
     const conversionRate = response.conversion_rates['USD'];
+    clearFields();
     $('.results').show();
     $('#show-conversion').text(`Your U.S. $${amount} is worth  ${amount * conversionRate} ${response.base_code}`);
   } else {
@@ -22,8 +24,9 @@ async function makeApiCall(currency, amount) {
   getElements(response, amount);
 }
 function clearFields() {
-  $("#show-conversion").val("");
-  $("#show-errors").val("");
+  console.log("I'm clearning the fields");
+  $("#show-conversion").text("");
+  $("#show-errors").text("");
 }
 
 $(document).ready(function () {
@@ -31,6 +34,12 @@ $(document).ready(function () {
     clearFields();
     let amount = $('#usd').val();
     let currency = $('#currency').val();
-    makeApiCall(currency, amount);
+    if (amount === "0" || amount === "") {
+      clearFields();
+      $('.results').show();
+      $('#show-errors').text('Please enter a number greater than 0');
+    } else {
+      makeApiCall(currency, amount);
+    }
   });
 });
