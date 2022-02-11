@@ -4,23 +4,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import ExchangeService from './exchange-service.js';
 
-// function createPath(currency) {
-//   let path1 = "response.conversion_rates.";
-//   let fullPath = path1.concat(currency);
-//   return fullPath;
 
-// }
-
-function getElements(response, currency, amount) {
-  // const fish = convert(amount, currency);
-
+function getElements(response, amount) {
   if (response.result === "success") {
-    // let result = createPath(currency);
     const conversionRate = response.conversion_rates['USD'];
     $('#show-conversion').text(`Your U.S. $${amount} is worth  ${amount * conversionRate} ${response.base_code}`);
-
-    // $('#show-conversion').text(`${result}`);
-    // $('#show-conversion').append(`The humidity in ${response.conversion_rates} is ${response.base_code}`);
   } else {
     $('#show-errors').text(`There was an error: ${response} `);
   }
@@ -28,7 +16,7 @@ function getElements(response, currency, amount) {
 
 async function makeApiCall(currency, amount) {
   const response = await ExchangeService.getRates(currency);
-  getElements(response, currency, amount);
+  getElements(response, amount);
 }
 function clearFields() {
   $("#show-conversion").val("");
