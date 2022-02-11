@@ -16,6 +16,7 @@ function getElements(response, currency, amount) {
 
   if (response.result === "success") {
     // let result = createPath(currency);
+    console.log(response.conversion_rates[response.base_code]);
     $('#show-conversion').text(`Your ${amount} is worth  ${response.base_code} is *****`);
 
     // $('#show-conversion').text(`${result}`);

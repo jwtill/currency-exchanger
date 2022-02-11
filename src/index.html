@@ -13,7 +13,7 @@
     </div>
     <label for="currencies">Select currency to convert to</label>
     <div class="input-group mb-3">
-      <select name="currencies" class="form-control">
+      <select name="currencies" id="currency" class="form-control">
         <option value="bzd">Belize Dollar</option>
         <option value="brl">Brazilian Real</option>
         <option value="cad">Canadian Dollar</option>
@@ -30,7 +30,8 @@
       <button class="btn-success" id="convert">Convert to selected currency</button>
     </div>
 
-    <div class="showConversion"></div>
+    <div id="show-conversion"></div>
+    <div id="show-errors"></div>
 
   </div>
 </body>
