@@ -1,10 +1,38 @@
 <html lang="en-US">
+
 <head>
-  <title>************</title>
+  <title>Currency Exchanger</title>
 </head>
+
 <body>
   <div class="container">
-    
+    <h1>Convert USD to many currencies using current exchange rate</h1>
+    <label for="usd">Enter an amount in U.S. dollars</label>
+    <div class="input-group mb-3">
+      <input id="usd" type="number" class="form-control">
+    </div>
+    <label for="currencies">Select currency to convert to</label>
+    <div class="input-group mb-3">
+      <select name="currencies" class="form-control">
+        <option value="bzd">Belize Dollar</option>
+        <option value="brl">Brazilian Real</option>
+        <option value="cad">Canadian Dollar</option>
+        <option value="cny">Chinese Renminbi</option>
+        <option value="cdf">Congolese Franc</option>
+        <option value="eur">Euro</option>
+        <option value="jpy">Japanese Yen</option>
+        <option value="mxn">Mexican Peso</option>
+        <option value="gbp">Pound Sterling</option>
+        <option value="aed">UAE Dirham</option>
+      </select>
+    </div>
+    <div class="input-group mb-3">
+      <button class="btn-success" id="convert">Convert to selected currency</button>
+    </div>
+
+    <div class="showConversion"></div>
+
   </div>
 </body>
+
 </html>
