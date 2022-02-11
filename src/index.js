@@ -8,8 +8,11 @@ import ExchangeService from './exchange-service.js';
 function getElements(response, amount) {
   if (response.result === "success") {
     const conversionRate = response.conversion_rates['USD'];
+    $('.results').show();
     $('#show-conversion').text(`Your U.S. $${amount} is worth  ${amount * conversionRate} ${response.base_code}`);
   } else {
+    console.log("It should print an error");
+    $('.results').show();
     $('#show-errors').text(`There was an error: ${response} `);
   }
 }

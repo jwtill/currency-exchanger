@@ -1,3 +1,8 @@
 body {
   background-color: green;
 }
+.results {
+  display:none;
+  background-color: white;
+  padding: 5px;
+}

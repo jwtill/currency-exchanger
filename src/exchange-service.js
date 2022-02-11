@@ -1,15 +1,14 @@
-export default class ExchangeService {  
+export default class ExchangeService {
   static async getRates(currency) {
-    
+
     try {
       const response = await fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/latest/${currency}`);
       if (!response.ok) {
         throw Error(response.statusText);
       }
-      // console.log("API approved");
+      console.log("Success");
       return response.json();
-    } catch(error) {
-      console.log(error);
+    } catch (error) {
       return error.message;
     }
   }
