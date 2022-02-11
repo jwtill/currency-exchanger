@@ -4,11 +4,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import ExchangeService from './exchange-service.js';
 
+function convert(amount, conversionRate) {
+  return amount * conversionRate;
+}
 
-
-function getElements(response) {
-  if (response.result.success) {
-    $('#show-conversion').text(`Your value in ${response.conversion_rates[0]} is conversion here`);
+function getElements(response, amount, currency) {
+  const conversionRate = response.conversion_rate + amount;
+  conversionRatate
+  if (response.result === "success") {
+    $('#show-conversion').text(`Your value in ${currency} is ${convert(amount, conversionRate)}`;
+    
+    
+    
+    // is ${amount}*${response.conversionrate}.${currency}`);
     
   } else {
     $('#show-errors').text(`There was an error: ${ response } `);
@@ -16,8 +24,9 @@ function getElements(response) {
 }
 
 async function makeApiCall(currency, amount) {
+  // console.log(currency, amount);
   const response = await ExchangeService.getRates(currency);
-  getElements(response, amount);
+  getElements(response, amount, currency);
 }
 function clearFields(){
   $("#show-conversion").val("");
