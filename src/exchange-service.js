@@ -6,7 +6,6 @@ export default class ExchangeService {
       if (!response.ok) {
         throw Error(response.statusText);
       }
-      console.log("Success");
       return response.json();
     } catch (error) {
       return error.message;

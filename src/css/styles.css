@@ -1,8 +1,14 @@
 body {
-  background-color: green;
+  background-color: #617F50;
 }
 .results {
   display:none;
   background-color: white;
   padding: 5px;
+  border-radius: 5px;
+}
+
+.btn-info {
+  background-color: #6E5080;
+  color: white;
 }
