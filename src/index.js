@@ -4,20 +4,31 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import ExchangeService from './exchange-service.js';
 
-$(document).ready(function() {
-  console.log("Wassup");
-});
+
 
 function getElements(response) {
-  if (response.main) {
-    $('.showConversion').text(`Your value in ${response.conversion_rates[0]} is ${response.${<--val of input-->}}`);
+  if (response.result.success) {
+    $('#show-conversion').text(`Your value in ${response.conversion_rates[0]} is conversion here`);
     
   } else {
-    $('.showErrors').text(`There was an error: ${response}`);
+    $('#show-errors').text(`There was an error: ${ response } `);
   }
 }
 
-async function makeApiCall(currency) {
+async function makeApiCall(currency, amount) {
   const response = await ExchangeService.getRates(currency);
-  getElements(response);
+  getElements(response, amount);
 }
+function clearFields(){
+  $("#show-conversion").val("");
+  $("#show-errors").val("");
+}
+
+$(document).ready(function() {
+  $('#convert').click(function() {
+    clearFields();
+    let amount = $('#usd').val();
+    let currency = $('#currency').val();
+    makeApiCall(currency, amount);
+  });
+});
