@@ -1,6 +1,10 @@
 body {
   background-color: #617F50;
 }
+.mb-3 {
+  width: 25%;
+  color: red;
+}
 .results {
   display:none;
   background-color: white;

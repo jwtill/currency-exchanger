@@ -13,9 +13,8 @@ function getElements(response, amount) {
     $('#show-conversion').text(`Your U.S. $${amount} is worth  ${amount * conversionRate} ${response.base_code}`);
     $('#show-conversion').text(`Your U.S. $${amount} is worth  ${Math.round((amount * conversionRate)*100)/100} ${response.base_code}`);
   } else {
-    // console.log("WTF", response.message);
     $('.results').show();
-    $('#show-errors').text(`There was an error: ${response} `);
+    $('#show-errors').text(`There was an error: ${response.message} `);
   }
 }
 
