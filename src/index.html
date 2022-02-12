@@ -6,14 +6,15 @@
 
 <body>
   <div class="container">
-    <h1>Convert USD to many currencies using current exchange rate</h1>
-    <label for="usd">Enter an amount</label>
+    <h1>Convert from one currency to another using current exchange rate</h1>
+    <label for="amt">Enter an amount</label>
     <div class="input-group mb-3">
-      <input id="usd" type="number" class="form-control">
+      <input id="usd" type="number" class="form-control" value="1">
     </div>
     <label for="currencies">Select currency to convert from</label>
     <div class="input-group mb-3">
-      <select name="currencies" id="currency" class="form-control">
+      <select name="currencies" id="currencyFrom" class="form-control">
+        <option value="usd" selected >U.S. Dollar</option>
         <option value="bzd">Belize Dollar</option>
         <option value="brl">Brazilian Real</option>
         <option value="cad">Canadian Dollar</option>
@@ -29,7 +30,8 @@
     
     <label for="currencies">Select currency to convert to</label>
     <div class="input-group mb-3">
-      <select name="currencies" id="currency" class="form-control">
+      <select name="currencies" id="currencyTo" class="form-control">
+        <option value="usd" >U.S. Dollar</option>
         <option value="bzd">Belize Dollar</option>
         <option value="brl">Brazilian Real</option>
         <option value="cad">Canadian Dollar</option>
@@ -37,7 +39,7 @@
         <option value="cdf">Congolese Franc</option>
         <option value="eur">Euro</option>
         <option value="jpy">Japanese Yen</option>
-        <option value="mxn">Mexican Peso</option>
+        <option value="mxn" selected >Mexican Peso</option>
         <option value="gbp">Pound Sterling</option>
         <option value="aed">UAE Dirham</option>
       </select>
