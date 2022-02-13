@@ -4,28 +4,29 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import ExchangeService from './exchange-service.js';
 
-function getElements(rateObj, currencyTo) {
-  if (rateObj.result === "success" && rateObj.error_type != "unsupported-code") {
-    const conversionRate = rateObj.conversion_rates[currencyTo];
+function getElements(parsedResponse, currencyTo) {
+  if (parsedResponse.result === "success" && parsedResponse.error_type != "unsupported-code") {
+    const conversionRate = parsedResponse.conversion_rates[currencyTo];
     return conversionRate;
   }
   else {
     $('.results').show();
-    $('#show-errors').text(`There was an error: ${rateObj} `);
+    $('#show-errors').text(`There was an error: ${parsedResponse}.`);
   }
 }
 function convertCurrency(conversionRate, amount) {
-  return Math.round((conversionRate * amount) * 100) / 100;
+  const conversion = Math.round((conversionRate * amount) * 100) / 100;
+  return conversion;
 }
 function displayElements(conversion, amount, rateObj, currencyTo) {
-  $('#show-conversion').text(`Your ${amount} ${rateObj.base_code} is worth   ${conversion} ${currencyTo}`);
+  $('#show-conversion').text(`Your ${amount} ${rateObj.base_code} is worth   ${conversion} ${currencyTo}.`);
 }
 
 async function makeApiCall(currencyFrom, amount, currencyTo) {
   const rateObj = await ExchangeService.getRates(currencyFrom);
   const parsedRate = getElements(rateObj, currencyTo);
   const conversion = convertCurrency(parsedRate, amount);
-  if(conversion) {
+  if (rateObj.result === "success") {
     displayElements(conversion, amount, rateObj, currencyTo);
   }
 }
@@ -38,7 +39,7 @@ function checkInput(input) {
   if ((parseInt(input) <= 0) || (input === "") || (input === isNaN())) {
     clearFields();
     $('.results').show();
-    $('#show-errors').text('Please enter a number greater than 0');
+    $('#show-errors').text('There was an error: Please enter a number greater than zero.');
     return false;
   } else {
     return true;
