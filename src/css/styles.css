@@ -1,15 +1,21 @@
 body {
-  background-color: #617F50;
+  background-color: #7E9078;
 }
 .mb-3 {
   width: 25%;
-  color: red;
+  margin-left: 30px;
 }
 .results {
   display:none;
-  background-color: white;
-  padding: 5px;
+  background-color: #7E9078;
+  padding: 15px;
   border-radius: 5px;
+  border: 1px solid black;
+  width: 25%;
+  height: 150px;
+  position: fixed;
+  top: 250px;
+  right: 200px;
 }
 .container {
   background-color:white;
@@ -19,6 +25,14 @@ body {
 }
 
 .btn-info {
-  background-color: #6E5080;
+  background-color: #8F7D77;
   color: white;
+}
+#header {
+  background-color: #77898F;
+  color: black;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 15px;
+  border: 1px solid black;
 }
