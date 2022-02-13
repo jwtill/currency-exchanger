@@ -11,11 +11,11 @@ function getElements(rateObj, currencyTo) {
   }
   else {
     $('.results').show();
-    $('#show-errors').text(`There was an error: ${rateObj.message} `);
+    $('#show-errors').text(`There was an error: ${rateObj} `);
   }
 }
 function convertCurrency(conversionRate, amount) {
-  return Math.round((conversionRate * amount)*100)/100;
+  return Math.round((conversionRate * amount) * 100) / 100;
 }
 function displayElements(conversion, amount, rateObj, currencyTo) {
   $('#show-conversion').text(`Your ${amount} ${rateObj.base_code} is worth   ${conversion} ${currencyTo}`);
@@ -25,12 +25,24 @@ async function makeApiCall(currencyFrom, amount, currencyTo) {
   const rateObj = await ExchangeService.getRates(currencyFrom);
   const parsedRate = getElements(rateObj, currencyTo);
   const conversion = convertCurrency(parsedRate, amount);
-  displayElements(conversion, amount, rateObj, currencyTo);
+  if(conversion) {
+    displayElements(conversion, amount, rateObj, currencyTo);
+  }
 }
 
 function clearFields() {
   $("#show-conversion").text("");
   $("#show-errors").text("");
+}
+function checkInput(input) {
+  if ((parseInt(input) <= 0) || (input === "") || (input === isNaN())) {
+    clearFields();
+    $('.results').show();
+    $('#show-errors').text('Please enter a number greater than 0');
+    return false;
+  } else {
+    return true;
+  }
 }
 
 $(document).ready(function () {
@@ -39,13 +51,11 @@ $(document).ready(function () {
     let amount = $('#amt').val();
     let currencyFrom = $('#currencyFrom').val();
     let currencyTo = $('#currencyTo').val().toUpperCase();
-    if ((parseInt(amount) <= 0) || (amount === "")) {
-      clearFields();
-      $('.results').show();
-      $('#show-errors').text('Please enter a number greater than 0');
-    } else {
+    if (checkInput(amount)) {
       $('.results').show();
       makeApiCall(currencyFrom, amount, currencyTo);
+    } else {
+      return false;
     }
   });
 });
