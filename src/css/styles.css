@@ -1,6 +1,8 @@
 body {
   background-image: url("./../assets/images/currency.jpeg");
   background-color: #7E9078;
+  font-family: "Optima", "Verdana", monospace;
+  font-weight:bolder;
 }
 .mb-3 {
   width: 25%;
@@ -17,17 +19,22 @@ body {
   position: fixed;
   top: 250px;
   right: 200px;
+  font-size: 1.5em;
 }
 .container {
   background-color:white;
   padding: 10px;
   margin-top: 40px;
   border-radius: 5px;
+  border: 1px solid grey;
 }
 
 .btn-info {
   background-color: #8F7D77;
   color: white;
+}
+.btn-info:hover {
+  background-color: #7E9078;
 }
 #header {
   background-color: #77898F;
@@ -36,4 +43,5 @@ body {
   padding: 15px;
   margin: 15px;
   border: 1px solid black;
+  text-align: center;
 }

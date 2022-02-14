@@ -18,16 +18,16 @@ function convertCurrency(conversionRate, amount) {
   const conversion = Math.round((conversionRate * amount) * 100) / 100;
   return conversion;
 }
-function displayElements(conversion, amount, rateObj, currencyTo) {
+function displayElements(amount, currencyTo, rateObj, conversion) {
   $('#show-conversion').text(`Your ${amount} ${rateObj.base_code} is worth   ${conversion} ${currencyTo}.`);
 }
 
-async function makeApiCall(currencyFrom, amount, currencyTo) {
+async function makeApiCall(amount, currencyFrom, currencyTo) {
   const rateObj = await ExchangeService.getRates(currencyFrom);
   const parsedRate = getElements(rateObj, currencyTo);
   const conversion = convertCurrency(parsedRate, amount);
   if (rateObj.result === "success") {
-    displayElements(conversion, amount, rateObj, currencyTo);
+    displayElements(amount, currencyTo, rateObj, conversion);
   }
 }
 
@@ -38,7 +38,7 @@ function clearFields() {
 function checkInput(input) {
   if ((parseInt(input) <= 0) || (input === "") || (input === isNaN())) {
     clearFields();
-    $('.results').show();
+    $('.results').fadeIn();
     $('#show-errors').text('There was an error: Please enter a number greater than zero.');
     return false;
   } else {
@@ -53,8 +53,8 @@ $(document).ready(function () {
     let currencyFrom = $('#currencyFrom').val();
     let currencyTo = $('#currencyTo').val().toUpperCase();
     if (checkInput(amount)) {
-      $('.results').show();
-      makeApiCall(currencyFrom, amount, currencyTo);
+      $('.results').fadeIn();
+      makeApiCall(amount, currencyFrom, currencyTo);
     } else {
       return false;
     }

@@ -7,13 +7,14 @@
 <body>
   <div class="container">
     <div id="header">
-    <h1>Convert from one currency to another using current exchange rate</h1>
+    <h1>Currency Exchanger</h1>
+    <h4>Convert from one currency to another using current exchange rate</h4>
   </div>
-    <label for="amt">Enter an amount</label>
+    <label for="amt">Enter an amount:</label>
     <div class="input-group mb-3">
       <input id="amt" type="number" class="form-control" value="1">
     </div>
-    <label for="currencies">Select currency to convert from</label>
+    <label for="currencies">Select currency to convert <em>from:</em></label>
     <div class="input-group mb-3">
       <select name="currencies" id="currencyFrom" class="form-control">
         <option value="usd" selected >U.S. Dollar</option>
@@ -30,7 +31,7 @@
       </select>
     </div>
     
-    <label for="currencies">Select currency to convert to</label>
+    <label for="currencies">Select currency to convert <em>to</em>:</label>
     <div class="input-group mb-3">
       <select name="currencies" id="currencyTo" class="form-control">
         <option value="usd" >U.S. Dollar</option>
